@@ -12,11 +12,8 @@ let userLocation = false //for sending user location to left side
 
 // ! Variables
 const API_KEY = "e17c897aa935921a081cf75bcd4fb9e2"
-
 let url;
 let unit = 'metric'
-
-let isYourLocation;
 let cityNames = []
 let lang = 'en'
 
@@ -42,10 +39,8 @@ locate.addEventListener("click",(e)=>{
         url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=${unit}&lang=${lang}`
 
         userLocation = true
-        isYourLocation = true
-        
         getWeatherData()
-        isYourLocation = false
+
     })
 })
 
@@ -115,7 +110,7 @@ const showOnScreen = ({main,name,weather,sys})=>{
                     <ul class="list-unstyled mt-2 mb-4">
                         
                         <li class="text-end me-2"><i class="bi bi-x-circle"></i></li>
-                        ${isYourLocation ? '<h4>Your Location</h4>' : ''}
+                        <h4></h4>
                         <h4 class="my-0 fw-normal">
                             ${name} <span ><sup>
                             <img src="https://flagsapi.com/${sys.country}/shiny/24.png" class="rounded-circle" alt=${sys.country}/> </sup></span>
@@ -141,6 +136,7 @@ const showOnScreen = ({main,name,weather,sys})=>{
         if(userLocation){
             locationDiv.innerHTML = card
             userLocation = false
+            locate.setAttribute("style","pointer-events: none; opacity: 0.5;")
         }else{
             cardContainer.innerHTML = card + cardContainer.innerHTML
         }
@@ -148,15 +144,12 @@ const showOnScreen = ({main,name,weather,sys})=>{
     }
     else{
         alertMessage.classList.replace("d-none","d-block")
-
-        // 
         if(lang=='ru'){
             alertMessage.textContent = `Вы уже знаете погоду в ${name}, пожалуйста, найдите другой город 😉`
         }else{
              alertMessage.textContent = `You already know the weather for ${name}, Please search for another city 😉`
         }
        
-
         setTimeout(()=>{
             alertMessage.classList.replace("d-block","d-none")
         },3000)
