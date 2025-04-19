@@ -1,6 +1,3 @@
-// e17c897aa935921a081cf75bcd4fb9e2
-// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-
 // ! Selectors
 const form = document.querySelector("form")
 const input = document.querySelector("form input")
