@@ -11,7 +11,8 @@ const locationDiv = document.getElementById("userLocation")
 let userLocation = false //for sending user location to left side
 
 // ! Variables
-const API_KEY = "e17c897aa935921a081cf75bcd4fb9e2"
+// const API_KEY = "e17c897aa935921a081cf75bcd4fb9e2"
+const API_KEY = ${{ secrets.API_KEY }}
 let url;
 let unit = 'metric'
 
