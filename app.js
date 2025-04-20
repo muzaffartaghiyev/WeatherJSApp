@@ -1,3 +1,6 @@
+import { updateClock } from "./clock.js"
+
+
 // ! Selectors
 const form = document.querySelector("form")
 const input = document.querySelector("form input")
@@ -17,6 +20,11 @@ let unit = 'metric'
 let cityNames = []
 let lang = 'en'
 
+
+
+// ! Calling clock 
+setInterval(() => updateClock(lang), 1000);
+updateClock(lang);
 
 
 // ! Search by name 
@@ -58,6 +66,7 @@ langBtn.addEventListener('click',(e)=>{
     cardContainer.innerHTML = ''
     locationDiv.innerHTML = ''
     cityNames=[]
+    locate.setAttribute("style","pointer-events: visible; opacity: 1;")
 
 })
 
@@ -109,7 +118,7 @@ const showOnScreen = ({main,name,weather,sys})=>{
                     
                     <ul class="list-unstyled mt-2 mb-4">
                         
-                        <li class="text-end me-2"><i class="bi bi-x-circle"></i></li>
+                        <li class="text-end me-2" style="cursor:pointer;"><i class="bi bi-x-circle"></i></li>
                         <h4></h4>
                         <h4 class="my-0 fw-normal">
                             ${name} <span ><sup>
@@ -134,6 +143,16 @@ const showOnScreen = ({main,name,weather,sys})=>{
         `
 
         if(userLocation){
+            let yourLocationText = ''
+            if(lang=='ru'){
+                yourLocationText = 'Ваше местоположение'
+            }
+            else{
+                yourLocationText = 'Your Location'
+            }
+
+            card = card.replace('<li class="text-end me-2" style="cursor:pointer;"><i class="bi bi-x-circle"></i></li>',`<li class="text-center me-2 text-primary h5">${yourLocationText}</li>`)
+
             locationDiv.innerHTML = card
             userLocation = false
             locate.setAttribute("style","pointer-events: none; opacity: 0.5;")

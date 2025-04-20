@@ -1,4 +1,4 @@
-function updateClock() {
+export function updateClock(lang) {
     const now = new Date();
     let hours = now.getHours();
     let minutes = now.getMinutes();
@@ -9,7 +9,14 @@ function updateClock() {
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let daysOfWeek = []
+    if(lang=='ru'){
+      daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+    }
+    else{
+        daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    }
+    
     const dayName = daysOfWeek[day];
 
     const clockDisplay = `${dayName} ${hours}:${minutes}:${seconds}`;
@@ -17,6 +24,4 @@ function updateClock() {
     
   }
 
-  setInterval(updateClock, 1000);
-
-  updateClock();
+  
