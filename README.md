@@ -5,7 +5,7 @@
 
 The Weather App is a web-based application that allows users to search for current weather conditions in cities worldwide. It also supports retrieving the weather for the user's current location. The application displays weather data in both English and Russian and features real-time clock updates.
 
-## [CLICK HERE TO SEE THE DEMO WEBSITE](https://muzeffertagiyev.github.io/WeatherJSApp/)
+## [CLICK HERE TO SEE THE DEMO WEBSITE](https://muzeffartaghiyev.github.io/WeatherJSApp/)
 
 ---
 
